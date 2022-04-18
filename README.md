@@ -24,9 +24,9 @@ The two hotel datasets were merged into one main dataframe. The dataframe was th
 The model with the highest test accuracy was selected as our predictive model and a secondary interpretative model was also chosen in order to gain a deeper understanding of factors influencing cancellations. The models were evaluated, and conclusions and recommendations were derived to optimize occupancy, improve operations, and increase a hotel's revenue. 
 
 
-## Project Codes 
+## Project Files 
 ---
- [Google Collab (Python)](Hotel_Booking_Clustering_Final_2.ipynb)   
+ [Python Codes (Google Collab)](Hotel_Booking_Clustering_Final_2.ipynb)   
 
 ## Data Dictionary 
 ---
@@ -48,6 +48,7 @@ The model with the highest test accuracy was selected as our predictive model an
 |CustomerType|Categorical|Type of booking, assuming one of four categories: Contract (when the booking has an allotment or other type of contract associated to it), Group (when the booking is associated to a group), Transient (when the booking is not part of a group or contract, and is not associated to other transient booking), and Transient-party (when the booking is transient, but is associated to at least other transient booking).|
 |DaysInWaitingList|Integer|Number of days the booking was in the waiting list before it was confirmed to the customer. Calculated by subtracting the date the booking was confirmed to the customer from the date the booking entered on the Property Management System.|
 |DepositType|Categorical|Indication on if the customer made a deposit to guarantee the booking. This variable can assume three categories: No Deposit (no deposit was made), Non Refund (a deposit was made in the value of the total stay cost), and Refundable (a deposit was made with a value under the total cost of stay). Value calculated based on the payments identified for the booking in the transaction (TR) table before the booking׳s arrival or cancellation date. In case no payments were found the value is “No Deposit”. If the payment was equal or exceeded the total cost of stay, the value is set as “Non Refund”. Otherwise the value is set as “Refundable”.|
+|Hotel|Categorical|Hotel type designation. There are two types of hotel, city hotel and resort hotel.|
 |DistributionChannel|Categorical|Booking distribution channel. The term “TA” means “Travel Agents” and “TO” means “Tour Operators”.|
 |IsCanceled|Integer|Value indicating if the booking was canceled (1) or not (0).|
 |IsRepeatedGuest|Integer|Value indicating if the booking name was from a repeated guest (1) or not (0). Variable created by verifying if a profile was associated with the booking customer. If so, and if the customer profile creation date was prior to the creation date for the booking on the Property Management System database it was assumed the booking was from a repeated guest.|
