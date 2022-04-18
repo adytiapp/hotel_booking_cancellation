@@ -24,9 +24,9 @@ The two hotel datasets were merged into one main dataframe. The dataframe was th
 The model with the highest test accuracy was selected as our predictive model and a secondary interpretative model was also chosen in order to gain a deeper understanding of factors influencing cancellations. The models were evaluated, and conclusions and recommendations were derived to optimize occupancy, improve operations, and increase a hotel's revenue. 
 
 
-## Project Files 
+## Project Codes 
 ---
- [Hotel Data](https://github.com/JulKelman/capstone/tree/master/data)   
+ [Google Collab (Python)](Hotel_Booking_Clustering_Final_2.ipynb)   
 
 ## Data Dictionary 
 ---
