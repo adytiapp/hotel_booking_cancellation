@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Hotel Booking Cancellation</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<h1><strong>Hotel Booking Cancellation</strong>
+				</div>
+				<div class="inner">
+					<a href="https://adytiapp.github.io/adytia_uwak_portfolio/" class="button small">Home</a>
+					<a href="https://adytiapp.github.io/adytia_uwak_projects.html" class="button small">Projects</a>
+					<a href="https://adytiapp.github.io/adytia_uwak_articles.html" class="button small">Articles</a>
+				</div>
+			</header>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- One -->
+					<section id="one">
+						<header class="major">
+							<h1>Hotel Booking Cancellation</h1>
+						</header>
+						<p>This project purpose is to find out the reason causing booking cancellations thus help reducing the cancellations. The dataset originally came from kaggle. This project includes EDA of booking cancellations, customer segmentation using K-Prototypes, and creating prediction model to help hotel operations.</p>
+						<h2>Insights</h2>
+						<ol>
+							<li>Features with most correlation with booking cancellations are <b>lead time, total of special requests, requested car parking spaces, and previous cancellations.</b></li>
+							<li>We found that <b>customer who reserved room type P and making non-refundable deposit have 100% cancellation rate</b>, this is an interesting findings and have to be investigated further.</li>
+							<li>We were able to identify <b>4 customer clusters:</b> the cancellation squad, the family, the return customer, and the vacationers.</li>
+							<li>We identified <b>Random Forest as the model giving us the highest predictive power.</b> This model classifies whether or not a booking will be canceled with <b>84% accuracy</b>.</li>
+							<li>Our interpretative Random Forest model revealed that <b>lead time, average daily rate, and deposit payment type </b> are the three features influencing cancellation prediction the most. Our analysis also pointed at the importance of number of special requests and reserved room type.</li>
+					  	</ol>
+						<p><h2>Project Files</h2></p>
+						For a more comprehensive analysis and visualization, please open the project files.
+						<ul>
+						<li><a href="assets\hotel_booking_rev_final.pptx">Pitching Deck</a></li>
+						<li><a href="https://colab.research.google.com/drive/1DqSjavmzAkyvowJFfjjvbhMwHaud3-Re">Google Collab - Hotel Clustering</a></li>
+						<li><a href="https://colab.research.google.com/drive/1eUi4W49JcPf4lYPCJ0LtykzeDPhG8bps">Google Collab - Hotel Cancellation Prediction Model</a></li>
+						<li><a href="https://public.tableau.com/shared/Y28XKSF43?:display_count=n&:origin=viz_share_link">Tableau Dashboard</a></li>
+					</ul>
+					</section>
+
+				<!-- Two -->
+					<section id="two">
+						<h2>Project Background</h2>
+						<div class="row gtr-50 gtr-uniform">
+							<div class="col-5"><span class="image fit"><img src="images/hotel_2.jpg" height = "300" width = "500"></span></div>
+						</div><br>
+						<p>Over the years, the hotel industry has changed with a majority of bookings now made through third parties such as Booking.com. Those Online Travel Agengies (OTA) have transformed cancellation policies from a footnote at the bottom of the page to the main selling point in their marketing campaigns. As a result, customers have become accustomed to free cancellation policies. Over the year, booking cancellation rates are increasing. This increase in booking cancellation makes it harder for hotels to accurately forecast, leading to non-optimized occupancy and revenue loss.</p> 
+						<p>When hotels try to protect themselves by using services such as Traveloka or Tiket.com, the burden then falls on OTAs. Indeed, this service requires the OTA to pay for the reservation if the booking is canceled and they cannot find a new guest to occupy the room. One thing is clear, whether you are a hotel or an OTA, cancellations have an negative financial impact on your business.</p>
+						<p>In addition to the direct financial consequences of cancellations, they also cause operational problems (such as over or understaffing). It is therefore very useful for hotels to know which bookings are likely to get canceled in order to plan their operations accordingly.</p>
+						<p>Characteristics of the booking itself may be good indicators of whether or not a booking will be canceled. For instance, the average length of stay of canceled reservations is 65% higher than non-canceled booking, with a lead time of 60 days. Engaging with the reasons why people are cancelling and what types of bookings are being canceled is crucial.</p>
+						<p>In order to solve this problem, we will use a real life hotel booking dataset to create a customer segmentation analysis in order to gain insights about the customers (and hopefully reasons why they cancel their reservation). We will then build a classification model (including the newly created customer clusters) to predict whether or not a booking will be canceled with the highest accuracy possible.</p>
+						<p>This model will allow hotels to predict if a new booking will be canceled or not, manage their business accordingly, and increase their revenue.</p>
+				
+				<!-- Three -->
+				<section id="three">
+					<h2>Data Scope, Goals & Objectives</h2>
+					<p>We used data from the <a href = "https://www.sciencedirect.com/science/article/pii/S2352340918315191">Hotel Booking Demand Datasets</a>. The dataset provides data from real bookings scheduled to arrive between July, 1st 2015 and August, 31st 2017 from two hotels in Portugal. Booking data from both hotels share the same structure, with 31 variables describing the 40,060 observations of H1 and 79,330 observations of H2. For a detailed list and description of those variables refer to the data dictionary.</p>
+					<p>The two hotel datasets were merged into one main dataframe. The dataframe was then cleaned making sure to address any null values, reformat certain features, and engineer new ones.</p>
+					<h3>Goals</h3>
+					<p>Our goal is to find out what features that causes cancellation rate and reduce booking cancellation rate by at least 10% in the following year.</p>
+					<h3>Objectives</h3>
+					<ol>
+					<li>Exploratory analysis of the cancellation target variable and its relation with other features. Data visualisation tools were used to identify trends and valuable insights from those analysis.</li>
+					<li>A clustering model was then used to create 4 custer segments whose profiles were then analysed.</li>
+					<li>Four models were then presented: baseline, logistic regression, decision tree, and random forest. The model with the highest test accuracy was selected as our predictive model and a secondary interpretative model was also chosen in order to gain a deeper understanding of factors influencing cancellations. The models were evaluated, and conclusions and recommendations were derived to optimize occupancy, improve operations, and increase a hotel's revenue.</li>
+					</ol>
+
+				<!-- Four -->
+				<section id="four">
+					<h2>Data Dictionary</h2>
+					<table>
+						<tr>
+						  <th>Feature Name</th>
+						  <th>Type</th>
+						  <th>Description</th>
+						</tr>
+						<tr>
+						  <td>ADR</td>
+						  <td>Float</td>
+						  <td>Average Daily Rate. Calculated by dividing the sum of all lodging transactions by the total number of staying nights.</td>
+						</tr>
+						<tr>
+						  <td>Adults</td>
+						  <td>Integer</td>
+						  <td>Number of adults.</td>
+						</tr>
+						<tr>
+						  <td>Agent</td>
+						  <td>Categorical</td>
+						  <td>ID of the travel agency that made the booking.</td>
+						</tr>
+						<tr>
+						  <td>ArrivalDateDayOfMonth</td>
+						  <td>Integer</td>
+						  <td>Day of the month of the arrival date.</td>
+						</tr>
+						<tr>
+						  <td>ArrivalDateMonth</td>
+						  <td>Categorical</td>
+						  <td>Month of arrival date with 12 categories: “January” to “December”.</td>
+						</tr>
+						<tr>
+						  <td>ArrivalDateWeekNumber</td>
+						  <td>Integer</td>
+						  <td>Week number of the arrival date.</td>
+						</tr>
+						<tr>
+						  <td>ArrivalDateYear</td>
+						  <td>Integer</td>
+						  <td>Year of arrival date.</td>
+						</tr>
+						<tr>
+						  <td>AssignedRoomType</td>
+						  <td>Categorical</td>
+						  <td>Code for the type of room assigned to the booking. Sometimes the assigned room type differs from the reserved room type due to hotel operation reasons (e.g. overbooking) or by customer request. Code is presented instead of designation for anonymity reasons.</td>
+						</tr>
+						<tr>
+						  <td>Babies</td>
+						  <td>Integer</td>
+						  <td>Number of babies.</td>
+						</tr>
+												<tr>
+						  <td>BookingChanges</td>
+						  <td>Integer</td>
+						  <td>	Number of changes/amendments made to the booking from the moment the booking was entered on the Property Management System until the moment of check-in or cancellation. Calculated by adding the number of unique iterations that change some of the booking attributes, namely: persons, arrival date, nights, reserved room type or meal.</td>
+						</tr>
+						<tr>
+						  <td>Children</td>
+						  <td>Integer</td>
+						  <td>Number of children. Sum of both payable and non-payable children.</td>
+						</tr>
+						<tr>
+						  <td>Company</td>
+						  <td>Categorical</td>
+						  <td>ID of the company/entity that made the booking or responsible for paying the booking. ID is presented instead of designation for anonymity reasons.</td>
+						</tr>
+						<tr>
+						  <td>Country</td>
+						  <td>Categorical</td>
+						  <td>Country of origin. Categories are represented in the International Standards Organization (ISO) 3155–3:2013 format.</td>
+						</tr>
+						<tr>
+						  <td>CustomerType</td>
+						  <td>Integer</td>
+						  <td>Type of booking, assuming one of four categories: Contract (when the booking has an allotment or other type of contract associated to it), Group (when the booking is associated to a group), Transient (when the booking is not part of a group or contract, and is not associated to other transient booking), and Transient-party (when the booking is transient, but is associated to at least other transient booking).</td>
+						</tr>
+						<tr>
+						  <td>DaysInWaitingList</td>
+						  <td>Integer</td>
+						  <td>Number of days the booking was in the waiting list before it was confirmed to the customer. Calculated by subtracting the date the booking was confirmed to the customer from the date the booking entered on the Property Management System.</td>
+						</tr>
+						<tr>
+						  <td>DepositType</td>
+						  <td>Categorical</td>
+						  <td>Indication on if the customer made a deposit to guarantee the booking. This variable can assume three categories: No Deposit (no deposit was made), Non Refund (a deposit was made in the value of the total stay cost), and Refundable (a deposit was made with a value under the total cost of stay). Value calculated based on the payments identified for the booking in the transaction (TR) table before the booking׳s arrival or cancellation date. In case no payments were found the value is “No Deposit”. If the payment was equal or exceeded the total cost of stay, the value is set as “Non Refund”. Otherwise the value is set as “Refundable”.</td>
+						</tr>
+						<tr>
+						  <td>DistributionChannel</td>
+						  <td>Categorical</td>
+						  <td>Booking distribution channel. The term “TA” means “Travel Agents” and “TO” means “Tour Operators”.</td>
+						</tr>
+						<tr>
+							<td>Hotel</td>
+							<td>Integer</td>
+							<td>Indicating which hotel the booking was made, (h1) represent resort hotel and (h2) represen city hotel.</td>
+						</tr>
+						<tr>
+						  <td>IsCanceled</td>
+						  <td>Integer</td>
+						  <td>Value indicating if the booking was canceled (1) or not (0).</td>
+						</tr>
+						<tr>
+						  <td>IsRepeatedGuest</td>
+						  <td>Integer</td>
+						  <td>Value indicating if the booking name was from a repeated guest (1) or not (0). Variable created by verifying if a profile was associated with the booking customer. If so, and if the customer profile creation date was prior to the creation date for the booking on the Property Management System database it was assumed the booking was from a repeated guest.</td>
+						</tr>
+						<tr>
+						  <td>LeadTime</td>
+						  <td>Integer</td>
+						  <td>Number of days that elapsed between the entering date of the booking into the Property Management System and the arrival date. Calculated by subtracting the entering date from the arrival date.</td>
+						</tr>
+						<tr>
+						  <td>MarketSegment</td>
+						  <td>Categorical</td>
+						  <td>Market segment designation. In categories, the term “TA” means “Travel Agents” and “TO” means “Tour Operators”.</td>
+						</tr>
+						<tr>
+						  <td>Meals</td>
+						  <td>Categorical</td>
+						  <td>Type of meal booked. Categories are presented in standard hospitality meal packages: Undefined/SC (no meal package), BB (Bed & Breakfast), HB (Half board: breakfast and one other meal – usually dinner), and FB (Full board: breakfast, lunch and dinner).</td>
+						</tr>
+						<tr>
+						  <td>PreviousBookingsNotCanceled</td>
+						  <td>Integer</td>
+						  <td>Number of previous bookings not canceled by the customer prior to the current booking. In case there was no customer profile associated with the booking, the value is set to 0. Otherwise, the value is the number of bookings with the same customer profile created before the current booking and not canceled.</td>
+						</tr>
+						<tr>
+						  <td>PreviousCancellations</td>
+						  <td>Integer</td>
+						  <td>Number of previous bookings that were canceled by the customer prior to the current booking. In case there was no customer profile associated with the booking, the value is set to 0. Otherwise, the value is the number of bookings with the same customer profile created before the current booking and canceled.</td>
+						</tr>
+						<tr>
+						  <td>RequiredCarParkingSpaces</td>
+						  <td>Integer</td>
+						  <td>Number of car parking spaces required by the customer.</td>
+						</tr>
+						<tr>
+						  <td>ReservationStatus</td>
+						  <td>Categorical</td>
+						  <td>Reservation last status, assuming one of three categories: Canceled (booking was canceled by the customer), Check-Out (customer has checked in but already departed), No-Show (customer did not check-in and did inform the hotel of the reason why).</td>
+						</tr>
+						<tr>
+						  <td>ReservationStatusDate</td>
+						  <td>Date</td>
+						  <td>Date at which the last status was set. This variable can be used in conjunction with the ReservationStatus to understand when was the booking canceled or when did the customer checked-out of the hotel.</td>
+						</tr>
+						<tr>
+						  <td>ReservedRoomType</td>
+						  <td>Categorical</td>
+						  <td>Code of room type reserved. Code is presented instead of designation for anonymity reasons.</td>
+						</tr>
+						<tr>
+						  <td>StaysInWeekendNights</td>
+						  <td>Integer</td>
+						  <td>Number of weekend nights (Saturday or Sunday) the guest stayed or booked to stay at the hotel. Calculated by counting the number of weekend nights from the total number of nights.</td>
+						</tr>
+						<tr>
+						  <td>StaysInWeekNights</td>
+						  <td>Integer</td>
+						  <td>Number of week nights (Monday to Friday) the guest stayed or booked to stay at the hotel. Calculated by counting the number of week nights from the total number of nights.</td>
+						</tr>
+						<tr>
+						  <td>TotalOfSpecialRequests</td>
+						  <td>Integer</td>
+						  <td>Number of special requests made by the customer (e.g. twin bed or high floor).</td>
+						</tr>
+					  </table>
+				
+				<!-- Five -->
+				<section id="five">
+					<h2>Data Analysis</h2>
+					<ol>
+						<li>Features with most correlation with booking cancellations are <b>lead time, total of special requests, requested car parking spaces, and previous cancellations.</b></li>
+						<li>We found that <b>customer who reserved room type P and making non-refundable deposit have 100% cancellation rate</b>, this is an interesting findings and have to be investigated further.</li>
+						<li>We were able to identify <b>4 customer clusters:</b> the cancellation squad, the family, the return customer, and the vacationers.</li>
+						<li>We identified <b>Random Forest as the model giving us the highest predictive power.</b> This model classifies whether or not a booking will be canceled with <b>84% accuracy</b>.</li>
+						<li>Our interpretative Random Forest model revealed that <b>lead time, average daily rate, and deposit payment type </b> are the three features influencing cancellation prediction the most. Our analysis also pointed at the importance of number of special requests and reserved room type.</li>
+					  </ol>
+
+				<!-- Six -->
+				<section id="six">
+					<h2>Recommendation</h2>
+					<ol>
+						<li>We recommend that a <b>deeper understanding of the situation may require additional hotel specific information</b> (such as deposit policies & hotel room information).</li>
+						<li><b>Consider offering non-refundable rates</b>. To appeal to more guests, we could offer both non-refundable and flexible rates. Guests who make non-refundable reservations are generally more committed to their stays because they'll have to pay if they cancel, make changes, or no-show.</li>
+						<li><b>Manage booking restrictions</b>. We may want to manage booking cancellation policies and restrictions to prevent certain kinds of bookings and lost revenue. Such as tightening the cancellation policies. We flexibility to specify whether we offer free cancellation, what time frame applies, and the charges if guests don’t show up.</li>
+						<li><b>Offer compelling prices</b>. As average daily rate is one of the most important features leading to cancellation, guests might cancel if they find a comparable room for a better price at a different property or the same room for a cheaper price on a different website.</li>
+						<li><b>Make booking changes and requests easier</b>. More special requests, request of parking spaces, and booking changes means they are less likely to cancel.</li>
+						<li><b>Start making strategy for each specific cluster</b>. Those clusters can be used for us to better prepare for our guests, engage with them in a more targeted manner, and give a sense of the cancellation risk.</li>
+						<li><b>Consider using our predictive model</b>, as a result, this would allow us to more accurately forecast their occupancy, manage our business accordingly, and increase our revenue.</li>
+					  </ol>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/adytia-putra-pradana-4b9493152/" class="icon brands fa-linkedin"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/adytiapp/" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="https://www.instagram.com/adytiapp/" class="icon brands fa-instagram"><span class="label">Dribbble</span></a></li>
+						<li><a href="mailto:adytiapp@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Adytia Uwak</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
