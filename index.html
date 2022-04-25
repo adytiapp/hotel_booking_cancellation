@@ -31,9 +31,16 @@
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h1>Hotel Booking Cancellation</h1>
+							<h2>Project Summary</h2>
 						</header>
-						<p>This project purpose is to find out the reason causing booking cancellations thus help reducing the cancellations. The dataset originally came from kaggle. This project includes EDA of booking cancellations, customer segmentation using K-Prototypes, and creating prediction model to help hotel operations.</p>
+						<p>This project purpose is to find out the reason causing booking cancellations thus help reducing the cancellations. The dataset originally came from kaggle. In this project I were able to do : </p>
+						<ul>
+						<li>Cleaned raw data using various method and make sure the data is feasible to analyze.</li>
+						<li>Conducted exploratory data analysis (EDA) to help find out what variable were causing booking cancellation.</li>
+						<li>Made a customer segmentation to help determine what segment that cancel the most and then help targeted marketing</li>
+						<li>Made a predictive model that have the highest predictive power to help hotel determine whether booking would be cancelled or not. This would be so helpful in hotel operations.</li>
+						</ul>
+
 						<h2>Insights</h2>
 						<ol>
 							<li>Features with most correlation with booking cancellations are <b>lead time, total of special requests, requested car parking spaces, and previous cancellations.</b></li>
@@ -58,16 +65,20 @@
 						<div class="row gtr-50 gtr-uniform">
 							<div class="col-5"><span class="image fit"><img src="images/hotel_2.jpg" height = "300" width = "500"></span></div>
 						</div><br>
-						<p>Over the years, the hotel industry has changed with a majority of bookings now made through third parties such as Booking.com. Those Online Travel Agengies (OTA) have transformed cancellation policies from a footnote at the bottom of the page to the main selling point in their marketing campaigns. As a result, customers have become accustomed to free cancellation policies. Over the year, booking cancellation rates are increasing. This increase in booking cancellation makes it harder for hotels to accurately forecast, leading to non-optimized occupancy and revenue loss.</p> 
+						<p>Over the years, the hotel industry has changed with a majority of bookings now made through third parties such as Traveloka. Those Online Travel Agengies (OTA) have transformed cancellation policies from a footnote at the bottom of the page to the main selling point in their marketing campaigns. As a result, customers have become accustomed to free cancellation policies. Over the year, booking cancellation rates are increasing. This increase in booking cancellation makes it harder for hotels to accurately forecast, leading to non-optimized occupancy and revenue loss.</p> 
 						<p>When hotels try to protect themselves by using services such as Traveloka or Tiket.com, the burden then falls on OTAs. Indeed, this service requires the OTA to pay for the reservation if the booking is canceled and they cannot find a new guest to occupy the room. One thing is clear, whether you are a hotel or an OTA, cancellations have an negative financial impact on your business.</p>
 						<p>In addition to the direct financial consequences of cancellations, they also cause operational problems (such as over or understaffing). It is therefore very useful for hotels to know which bookings are likely to get canceled in order to plan their operations accordingly.</p>
 						<p>Characteristics of the booking itself may be good indicators of whether or not a booking will be canceled. For instance, the average length of stay of canceled reservations is 65% higher than non-canceled booking, with a lead time of 60 days. Engaging with the reasons why people are cancelling and what types of bookings are being canceled is crucial.</p>
 						<p>In order to solve this problem, we will use a real life hotel booking dataset to create a customer segmentation analysis in order to gain insights about the customers (and hopefully reasons why they cancel their reservation). We will then build a classification model (including the newly created customer clusters) to predict whether or not a booking will be canceled with the highest accuracy possible.</p>
 						<p>This model will allow hotels to predict if a new booking will be canceled or not, manage their business accordingly, and increase their revenue.</p>
+					</section>
 				
 				<!-- Three -->
 				<section id="three">
 					<h2>Data Scope, Goals & Objectives</h2>
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-6"><span class="image fit"><img src="images/data_overview.png"></span></div>
+					</div><br>
 					<p>We used data from the <a href = "https://www.sciencedirect.com/science/article/pii/S2352340918315191">Hotel Booking Demand Datasets</a>. The dataset provides data from real bookings scheduled to arrive between July, 1st 2015 and August, 31st 2017 from two hotels in Portugal. Booking data from both hotels share the same structure, with 31 variables describing the 40,060 observations of H1 and 79,330 observations of H2. For a detailed list and description of those variables refer to the data dictionary.</p>
 					<p>The two hotel datasets were merged into one main dataframe. The dataframe was then cleaned making sure to address any null values, reformat certain features, and engineer new ones.</p>
 					<h3>Goals</h3>
@@ -78,6 +89,7 @@
 					<li>A clustering model was then used to create 4 custer segments whose profiles were then analysed.</li>
 					<li>Four models were then presented: baseline, logistic regression, decision tree, and random forest. The model with the highest test accuracy was selected as our predictive model and a secondary interpretative model was also chosen in order to gain a deeper understanding of factors influencing cancellations. The models were evaluated, and conclusions and recommendations were derived to optimize occupancy, improve operations, and increase a hotel's revenue.</li>
 					</ol>
+				</section>
 
 				<!-- Four -->
 				<section id="four">
@@ -249,20 +261,134 @@
 						  <td>Number of special requests made by the customer (e.g. twin bed or high floor).</td>
 						</tr>
 					  </table>
+					</section>
 				
 				<!-- Five -->
 				<section id="five">
-					<h2>Data Analysis</h2>
+					<h2>Data Cleaning</h2>
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-4"><span class="image fit"><img src="images/data cleaning.png"></span></div>
+					</div><br>
 					<ol>
-						<li>Features with most correlation with booking cancellations are <b>lead time, total of special requests, requested car parking spaces, and previous cancellations.</b></li>
-						<li>We found that <b>customer who reserved room type P and making non-refundable deposit have 100% cancellation rate</b>, this is an interesting findings and have to be investigated further.</li>
-						<li>We were able to identify <b>4 customer clusters:</b> the cancellation squad, the family, the return customer, and the vacationers.</li>
-						<li>We identified <b>Random Forest as the model giving us the highest predictive power.</b> This model classifies whether or not a booking will be canceled with <b>84% accuracy</b>.</li>
-						<li>Our interpretative Random Forest model revealed that <b>lead time, average daily rate, and deposit payment type </b> are the three features influencing cancellation prediction the most. Our analysis also pointed at the importance of number of special requests and reserved room type.</li>
+						<li>We cleaned few features containing white spaces that should be removed.</b></li>
+						<li>We removed agent and company features due to large missing data and large categorical characteristics.</li>
+						<li>We were able to engineer a new feature such as total day stays and total guests to simplify the analysis.</li>
+						<li>We combined arrival date data such as date, month, year to a datetime format.</li>
 					  </ol>
+				</section>
 
 				<!-- Six -->
 				<section id="six">
+					<h2>Data Analysis</h2>
+					<h3>What features correlates with booking cancellation?</h3>
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-7"><span class="image fit"><img src="images/heatmap.png"></span></div>
+					</div><br>
+					<ol>
+						<li>Lead time is the most highly correlated feature with whether or not a booking is canceled. It makes sense that as the number of days between when the booking is made and the supposed arrival date increases, customers have more time to cancel the reservation and there is more time for an unforeseen circumstance derailing travel plans to arise.</li>
+						<li>Interestingly, the total number of special requests is the second feature with the strongest correlation to our cancellation target. As the number of special requests made increases, the likelihood that a booking is canceled decreases. This suggests that engagement with the hotel prior to arrival and feeling like their needs are heard may make a customer less likely to cancel their reservation.</li>
+						<li>Related to special requests, the number of required car parking spaces is the third feature with the strongest correlation to our cancellation target. As the number of parking spaces requests increases, the likelihood that a booking is canceled decreases. Potential reasons for this relationship are discussed later on.</li>
+						<li>Interestingly, a customer's prior history with the hotel (measured by the number of previous bookings not canceled or whether or not a customer is a repeated guest) does not seem to be highly correlated with whether or not the current booking will be canceled. On the other hand, a customer's prior history of cancellation (measured by the number of previous cancellations is more highly correlated with whether or not the current booking will be canceled.</li>
+				  	</ol><br>
+					
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-6"><span class="image fit"><img src="images/analysis_1.png"></span></div>
+					</div><br>
+					<p><b>Interpretation:</b> Canceled bookings have a longer lead time on average. Potential reasons why were discussed above.</p>
+				
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-6"><span class="image fit"><img src="images/analysis_2.png"></span></div>
+					</div><br>
+					<p><b>Interpretation:</b> Customers who cancel their bookings make on average fewer special requests. Potential reasons why were discussed above.</p>
+				
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-6"><span class="image fit"><img src="images/analysis_3.png"></span></div>
+					</div><br>
+					<p><b>Interpretation:</b> On average, customers who do not cancel their bookings tend to require more parking spaces. Similarly to the number of special requests, it would make sense that the more a customer engages with the hotel (by putting in a request for a parking spot), the less likely they are to cancel. It is also fair to think that by the time a guest is thinking about where they will park their car, they are most likely pretty commited to their destination. Finally, thinking about this from the hotel perpective, it is possible that not many hotels around have a parking. As a result, the need for a parking space would limit the customer in their hotel options and make them less likely to cancel. More information would be required from the hotel directly to confirm this theory. However, if true, this suggests that adding parking spaces could be a way to help reduce cancellations.</p>
+				
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-6"><span class="image fit"><img src="images/analysis_4.png"></span></div>
+					</div><br>
+					<p><b>Interpretation:</b> The same pattern can be seen in both canceled and non-canceled bookings. Less bookings are canceled (or kept) around January. More bookings are canceled (and kept) in the warmer months between April and July.</p>
+				
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-6"><span class="image fit"><img src="images/analysis_5.png"></span></div>
+					</div>
+					<p><b>Interpretation:</b>
+						<ul>
+							<li>On average customers spend 3 nights in the hotel</li>
+							<li>On average, customers cancel 3 days before their supposed arrival date. This does not give hotels a lot of time to find a new guest or adjust their operations. This is further evidence for the need of a predictive model able to identify which bookings will be canceled earlier.</li>
+						</ul><br>
+
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-6"><span class="image fit"><img src="images/analysis_6.png"></span></div>
+					</div><br>
+					<p><b>Interpretation:</b> Customers who reserved room type P have the highest percentage booking cancellation with 100% of bookings canceled. As the dataset did not provide the actual room designations for anonymity purposes, it is hard to interpret why bookings of room type P are canceled more often.</p>
+				
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-6"><span class="image fit"><img src="images/analysis_7.png"></span></div>
+					</div><br>
+					<p><b>Interpretation:</b> Surprisingly, customers who pay a non-refundable deposit have a much higher percentage of canceled reservations. As this is a counter-intuitive finding, it is necessary to dig a little deeper into the characteristics of bookings with a non-refundable deposit.</p>
+				
+					<h3>How can customer segmentation help with reducing booking cancellation?</h3>
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-7"><span class="image fit"><img src="images/analysis_8.png"></span></div>
+					</div><br>
+					<p><b>Interpretation:</b>
+					<ul>
+						<li>We used K-Prototypes since our data is mixed between categorical and numerical variable.</li>
+						<li>Based on the cost, we choose 4 cluster because there is an obvious ‘elbow’ in the elbow method.</li>
+						<li>This cluster is also used in our cancellation prediction model, this will be explained later.</li>
+				  	</ul><br>
+				
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-7"><span class="image fit"><img src="images/cluster_0.png"></span></div>
+					</div><br>
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-7"><span class="image fit"><img src="images/cluster_1.png"></span></div>
+					</div><br>
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-7"><span class="image fit"><img src="images/cluster_2.png"></span></div>
+					</div><br>
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-7"><span class="image fit"><img src="images/cluster_3.png"></span></div>
+					</div><br>
+					<p>We were able to identify 4 customer clusters, the cancellation squad, the family, the return customer, and the vacationers. Cluster characteristics were explained in the illustration above.</p>
+					<h3>Can predictive model help reduce booking cancellation?</h3>
+					<p>Our goal is to build a model able to predict whether or not a booking will be canceled with the highest level of accuracy. In order to do so, our baseline model was compared to a logistic regression, a decision tree, and a random forest</p>
+					<h4>Model Preparation</h4>
+					<p>We do not want to leak any information about our target (cancellation) into our model. As a result, we must remove <code>is_canceled</code>, <code>reservation_status</code>, and <code>country</code> from our X variable.
+						The agent and company IDs recorded in the <code>agent</code> and <code>company</code> features include a large amount of categorical data that is de-identified and therefore difficult to interpret. Since information about the type of agent and company used is included in the <code>market_segment</code> and <code>distribution_channel</code> features, the agent and company features were not included in the model.</p>
+					<p>Finally, as models cannot take in datetime objects as features, the <code>reservation_status_date</code> and <code>arrival_date</code> features were also excluded from the predictive model. It's also worth mentioning that our <code>cluster</code> features from previous analysis also included to further enhance our model accuracy</p>
+
+					<h4>Model Evaluation</h4>
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-7"><span class="image fit"><img src="images/analysis_9.png"></span></div>
+					</div><br>
+					<p>We use Random Forest for our prediction model not only because it has highest predictive power, it also adds additional randomness to the model (not overfitting), while growing the trees. This results in a wide diversity that generally results in a better model.</p>
+				
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-7"><span class="image fit"><img src="images/analysis_10.png"></span></div>
+					</div><br>
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-5"><span class="image fit"><img src="images/analysis_11.png"></span></div>
+					</div><br>
+					<p><b>Interpretation :</b></p>
+					<p>We are correctly classifying 68% of the canceled bookings and 94% of the not canceled bookings. If our model predicted that a booking would be canceled, it was actually canceled in 86% of cases. If our model predicted that a booking would be not canceled, it was in fact not canceled in 83% of cases.</p>
+					<p>Looking at the confusion matrix, we see that there are 727 bookings that our model predicted to be canceled that were not actually canceled. This means that in 4% of the cases, a guest may arrive and the hotel may not be ready for them or the hotel may risk overbooking if they were looking for a replacement guest. In addition, there are 2118 bookings that our model predicted to be not canceled that were in fact canceled. This means that in 12% of cases, the hotel may be allocating their resources on the wrong reservations (getting a room ready that doesn't need to be or missing an opportunity to look for a replacement guest).</p>
+				
+					<h4>Feature Importances</h4>
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-7"><span class="image fit"><img src="images/analysis_12.png"></span></div>
+					</div><br>
+					<p><b>Interpretation :</b></p>
+					<p>Having longer lead time, making more expensive booking, and making a non refundable deposit are the most impactful features that have the most weight in predicting that a booking will be canceled.As discussed in the EDA section, the type of customers potentially required to make a non-refundable deposit may explain the link between this deposit type and cancellations.
+					Requiring more special requests, having longer day stay, and having history of previous cancellations also can have an impact, as it makes sense that having a history of cancellations would make a customer more likely to cancel their current booking. 
+				
+				</section>
+				
+				<!-- Seven -->
+				<section id="seven">
 					<h2>Recommendation</h2>
 					<ol>
 						<li>We recommend that a <b>deeper understanding of the situation may require additional hotel specific information</b> (such as deposit policies & hotel room information).</li>
@@ -273,12 +399,12 @@
 						<li><b>Start making strategy for each specific cluster</b>. Those clusters can be used for us to better prepare for our guests, engage with them in a more targeted manner, and give a sense of the cancellation risk.</li>
 						<li><b>Consider using our predictive model</b>, as a result, this would allow us to more accurately forecast their occupancy, manage our business accordingly, and increase our revenue.</li>
 					  </ol>
+				</section>
+			
+				<a href="https://adytiapp.github.io/adytia_uwak_portfolio/" class="button small">Home</a>
+				<a href="https://adytiapp.github.io/adytia_uwak_portfolio/projects.html" class="button small">Projects</a>
+			
 			</div>
-
-			<br>
-				
-			<a href="https://adytiapp.github.io/adytia_uwak_portfolio/" class="button small">Home</a>
-			<a href="https://adytiapp.github.io/adytia_uwak_portfolio/projects.html" class="button small">Projects</a>
 
 		<!-- Footer -->
 			<footer id="footer">
